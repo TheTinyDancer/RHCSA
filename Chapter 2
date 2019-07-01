@@ -1,0 +1,11 @@
+#Using Essentials Tools
+
+/etc/profile= Generic file processed by all users upon login
+/etc/bashrc= file processed when subshells are started
+~/.bash_profile= user specific shell variables defined here
+~/.bashrc= user-specific subshell variables defined here
+
+man -k <keyword> or apropos <keyword> = search man pages for the keyword
+info or pinfo = another source for commands and looking up them
+/usr/share/doc = third source of information for less common commands and third-party apps
+
