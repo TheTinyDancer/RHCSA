@@ -1,0 +1,31 @@
+#Essential File Management=
+/boot = Often mounted on a separate device since it contains all critical info for boot.
+/var = usually stored on a dedicated device since it can grow exponentially and uncontrollably.
+/home = usually on a dedicated device for security reasons with special mount options
+
+findmnt = shows mounts and relations that exist between them.
+cp <source> <destination> = copy a file or directory 
+
+#Wildcards
+* = unlimited number of all characters except for beginning with a period
+? = one specific character that can be any character
+[aur] = match one character in the range of whatever character is in the square brackets
+
+#Links
+Hard Links = linked to the inode address and physical data
+Symbolic/Soft Link = Linked to the name of the inode. If original file name changes or is deleted this link is dead.
+
+#Archive and Compression
+tar = archive/compress/extract command
+Options:
+-c = create an archive
+-v = verbose
+-r = add a file to an archive
+-f = next parameter is the filename
+-u = update/write newer versions of all files to the archive
+-t = view contents of an archive
+-x = extract archive to the current directory
+-j = compress with bzip2
+-z = compress with gzip
+-C = specify target directory EX. tar -xvf /homes.tar -C /tmp
+tar -xvf <archive name> <file you want out of archive> = how to extract a single file from an archive.
