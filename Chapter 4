@@ -1,3 +1,4 @@
+
 # Working with Text Files
 
 less = opens file in a pager for easy reading
@@ -13,13 +14,25 @@ sort options = -n (numeric) -r (reverse order) -k (specific column)
 
 #Regular Expressions
 
+. it matches any single character except a newline.
+* it matches zero or more existences of the immediate character preceding it.
+[ character(s) ] it matches any one of the characters specified in character(s), one can also use a hyphen (-) to mean a range of characters such as [a-f], [1-5], and so on.
+^ it matches the beginning of a line in a file.
+$ matches the end of line in a file.
+\ it is an escape character.
+[0-9] = means a single number
+[a-z] = means a single lower case letter
+[A-Z]  means a single upper case letter
+[a-zA-Z] = means a single letter
+[a-zA-Z 0-9] = means a single letter or number
 ^sometext = lines starting with sometext
 sometext$ = lines ending with sometext
-. = look for one specific character
 [abd] = look for a b or d.
 e\{2\} = match exactly two of 'e'
 e\{1,3\} = match between 1 and 3 of the character '3'
-colou?r = match 0 or 1 of the previous character so it will match 'color' or 'colour' 
+colou?r = match 0 or 1 of the previous character so it will match 'color' or 'colour'
+ca*t = match 0 or infinite amount of the character 'a'.
+
 
 #Grep Options
 -i = not case sensitive
@@ -28,3 +41,30 @@ colou?r = match 0 or 1 of the previous character so it will match 'color' or 'co
 -e = searching for lines more than one regular expression
 -A (number) = show number of lines after matching regular expression
 -B (number) = show number of lines before matching regular expression
+
+#AWK Guide
+
+#AWK Options
+-F"," = field column delimiter is equal to a comma. 
+FS="," same as above in variable. FS is a special variable for awk
+OFS="," = output field separator is set to a comma meaning field will be separated by a comma when output to the screen
+-v val=$x = pass a variable to the awk command
+val=$x  = use at end of awk command to state a variable
+'NR==1" = numbered row
+
+awk 'script' filename
+awk '/pattern/action' filename
+awk '!/pattern/{print}' filename = print line that doesnt contain the pattern
+awk '{print $1}' filename = print only column 1 or whatever column number is after the dollar sign.
+awk '/dog/{print $1}' filename = print only the first column of the line that contains dog.
+awk -v q="'" '{print q $0 q}' file  = print every line in single quotes
+awk '$1/cat/' test = will print the full line that contains 'cat' in the first column
+awk '$1=="cat"' test = same as above
+awk '$1 == "Medicine"{print $2}' file = will print only the second column of the line that has Medicine in the first column
+awk '!/Medicine/' file = print the lines that dont contain medicine
+awk -F, '$1 !~ /Medicine/' file = negate the pattern on the first column alone.
+awk 'NR==1 && /Medicine/' file = print medicine record only if it is the 1st record.
+awk -F, '/Medicine/ && $2>500' file = print all medicine records whose amount in the second column is greater than 500.
+
+
+
