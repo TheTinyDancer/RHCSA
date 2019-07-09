@@ -42,3 +42,40 @@ awk '!/Medicine/' file = print the lines that dont contain medicine
 awk -F, '$1 !~ /Medicine/' file = negate the pattern on the first column alone.
 awk 'NR==1 && /Medicine/' file = print medicine record only if it is the 1st record.
 awk -F, '/Medicine/ && $2>500' file = print all medicine records whose amount in the second column is greater than 500.
+
+# SED Guide
+
+#SED Format Explanation
+sed [options] commands [file-to-edit]
+sed '' file = this will print whatever is in the file since sed by default prints every line unless otherwise stated.
+sed 'p' file = will print each line twice back to back since p says to print within single quotes.
+sed 's/day/night/' oldfile>newfile
+s/ = substitute followed by the delimiter that is '/'
+day/ = original word followed by the delimiter
+night = word to replace the original word followed by the delimiter
+oldfile = file that contains the old word day
+newfile = the new file that will be created that will change the old pattern 'day' to the new pattern 'night'
+/ = is the delimiter seperating different parts of the SED command. The delimiter can be anything you want. It can be an underscore, colon, semi-colon, etc. It's best to use a delimiter that isn't contained within the command so that it doesnt have to be used with an escape character.
+Example: sed 's/\/usr\/local\/bin/\/common\/bin/' <old >new
+Instead use: sed 's:/usr/local/bin:/common/bin:' <old >new
+sed -n '1p' newfile = print the first line of the file.
+sed -n '1,5p' file = print the first 5 lines of the file
+sed '1~2d' file = will delete every other line starting with line 1, this doesnt affect the original file as SED only affects the stream output if you want to make effect to files send it to a new file.
+sed -i '1~2d' everyother.txt = will affect the original file because of the -i option
+sed -n 's/on/forward/2p' file = the 'p' after /2 will print the lines where a substitution took place.
+
+
+#SED Options/Comamnds
+-n = means to negate the default print option with sed
+-i = means to edit in-place or edit the original file instead of just the stream output.
+s/ = substitute the first match on the line then move to the next line.
+/g = use g after the last delimiter in a substitution set to tell sed to replace every instance of the pattern.
+/3 - use a number after the last delimiter to tell sed to replace the third instance of the pattern on the line.
+-i.bak = will create a backup file and then edit the regular file in-place
+'1,5p' = print lines 1-5
+'1,+4p' = print line 1 and the next 4.
+'1~2p' = print every other line starting with line 1
+'1~2d' = with delete every other line starting with line 1
+
+
+
