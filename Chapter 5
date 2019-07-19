@@ -1,0 +1,27 @@
+#Connecting To Redhat
+Console - what you see when your're looking at the computer screen. Physical computer itself
+Terminal - Is the command line environment. 
+Most commonly these terms can be interchanged though
+
+#SSH
+sshd service controls ssh.
+-p = to specify a different port
+-v = verbose mode
+-X = enable support for graphical applications
+ssh <user>@<server ip/hostname>
+~/.ssh/known_hosts = where public key fingerprints are stored
+/etc/ssh/ssh_config = default ssh cconfig file.
+
+#SCP
+scp <FromDirectory> <server ip>:<ToDirectory>
+-r = copy entire directory and subdirectory
+-P = specify port number
+-p = specify port name
+
+#Public/Private Key Authentication
+
+
+#Useful Commands
+echo b > /proc/sysrq-trigger
+ssh <user>@<server ip>
+
