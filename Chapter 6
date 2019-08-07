@@ -1,0 +1,23 @@
+#User and Group Management
+
+#Commands
+id <user> = get info about an user account
+su = Opens a subshell as a different user with the advantage that only subshell commands are executed as root
+sudo = sets up environment where specific tasks are executed with admin privileges
+PolicyKit = Set up graphical utilities to run with admin privileges
+vipw = edit /etc/passwd
+vipw -s = edit /etc/shadow
+vigr = edit /etc/group
+usermod = modify user properties
+
+#User Management Configs
+/etc/default/useradd = files to control assumed default values for useradd
+/etc/login.defs = login-related variables are set.
+  MOTD_FILE = defines file that is used message of the day
+  ENV_PATH = defines the $PATH variable
+  PASS_MAX_DAYS, PASS_MIN_DAYS. PASS_WARN_AGE = define default password expiration properties for new users
+  UID_MIN = The first UID to use when creating new users
+  CREATE_HOME = Indicates whether or not to create a home directory for new users
+  USERGROUPS_ENAB = Determines if new user gets a group with the same name.
+
+
