@@ -19,9 +19,42 @@ scp <FromDirectory> <server ip>:<ToDirectory>
 -p = specify port name
 
 #Public/Private Key Authentication
+ssh-keygen = used to create a key pair
+ssh-copy-id = used to copy public key to a target server
+~/.ssh/id_rsa = file location of private key
+~/.ssh/id_rsa.pub = public key location
 
+#Screen Command
+screen allows you to open multiple terminal windows.
+session vs window = multiple windows belong to one session.
+CTRL+a = key sequence to use before every command intended for the screen application
+screen -r = reconnect to a screen session from a ssh session
+screen -ls = list of currently running screen sessions
+screen -c = connect to someone elses screen session.
+screen -S <name> = creates a screen session with a specific name
+/var/run/screen = location to see all screen sessions and who they belong to
+
+#Screen commands used with CTRL+a
+c = create new window
+w = displays list of windows open
+A = rename current window
+n = go to next window
+p = go to previous window
+k = kill current window
+S = split windows horizontally
+TAB = switch between horizontal windows
+l = split windows vertically
+d = detach from session without stopping it
+r = reattach a detached screen session
+[ = begin copy mode
+] = paste
+? = show all commands
+space = move between windows
+escape = allows you to scroll with up and down arrow
+a, x = lock current screen session
 
 #Useful Commands
 echo b > /proc/sysrq-trigger
 ssh <user>@<server ip>
+ssh-copy-id <target server>
 
