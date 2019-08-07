@@ -1,5 +1,7 @@
 #User and Group Management
 
+~/.profile = Specific settings for one user applied when starting a login shell.
+
 #Commands
 id <user> = get info about an user account
 su = Opens a subshell as a different user with the advantage that only subshell commands are executed as root
@@ -9,6 +11,9 @@ vipw = edit /etc/passwd
 vipw -s = edit /etc/shadow
 vigr = edit /etc/group
 usermod = modify user properties
+groupmod = manage group properties
+groupmems = check what users are about of a group
+
 
 #User Management Configs
 /etc/default/useradd = files to control assumed default values for useradd
@@ -19,5 +24,8 @@ usermod = modify user properties
   UID_MIN = The first UID to use when creating new users
   CREATE_HOME = Indicates whether or not to create a home directory for new users
   USERGROUPS_ENAB = Determines if new user gets a group with the same name.
+  
+#Lightweight Directory Access Protocol (LDAP)
+
 
 
