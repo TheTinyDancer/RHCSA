@@ -1,0 +1,23 @@
+#Configuring Permissions
+
+#Commands
+find = search files based on parameters
+chown <user> <file> = set ownership of file
+chgrp <group> <file> - set group of file
+groups <user> = view all groups a user belongs to
+newgrp <group> = change the current users effective primary group until they use 'exit' at which point their primary group will revert to the original
+gpasswd <group> = set a group password so that users who are not a part of the group can use the newgrp if they know the password.
+
+#chmod
+
+#Numeric & Alpha representations
+Used to set the permissions for user, group, and others of a file or directory.
+Read= 4
+Write= 2
+Execute= 1
+7 = r+w+x
+6 = r+w
+5 = r+x
+3 = w+x
+
+#SUID
