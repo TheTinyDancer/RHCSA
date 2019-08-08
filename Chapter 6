@@ -26,6 +26,19 @@ groupmems = check what users are about of a group
   USERGROUPS_ENAB = Determines if new user gets a group with the same name.
   
 #Lightweight Directory Access Protocol (LDAP)
+#Configuration Tools
+authconfig= command line interface.
+authconfig-tui = utility with text user interaface
+authconfig-gtk = utility with GUI.
 
+#sssd
+SSSD = provides a set of daemons to manage access to remote directories and authentication mechanisms. It provides Name Service Switch (NSS) and Pluggable Authentication Modules(PAM) interfaces toward the system and a pluggable back end system to connect to multiple different account sources.
+/etc/sssd/sssd.conf  = main configuration file for SSSD
 
+#sssd file LDAP parameters
+ldap_search_base = name of the defualt LDAP context
+ldap_url = name of LDAP server that is used for authentication
+ldap_id_use_start_tls = indicates whether TLS is used to secure the connection to the LDAP server
+ldap_tls_cacertdir = the location in the LDAP client where certificates are copied to
+ldap_tls_reqcert = parameter that indicates how strict the client needs are to enforce TLS security.
 
