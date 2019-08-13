@@ -21,3 +21,17 @@ Execute= 1
 3 = w+x
 
 #SUID
+allows an executable to run as root instead of the permission level of the logged in user.
+chmod 4755 /executable 
+chmod u+s /executable
+
+#SGID
+allows an executable to be run at the permission level of the group or when applied to a directory is sets default group ownerships on all files and subdirectories,
+meaning that any files or directories created under that directory will now be given the group owner of the main directory.
+chmod 4755 /executable 
+chmod g+s /directory
+
+#Sticky Bit
+Used to protect files from accidental deletion. When set only the owner is able to delete their own files under that directory. Useful for shared directories
+chmod 1755 /directory 
+chmod +t /directory
