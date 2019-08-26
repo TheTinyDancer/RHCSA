@@ -1,0 +1,46 @@
+#Access Control Lists
+Used as a way to add greater functionality to servers. Not all utilities support ACLs so there's always a risk to lose ACL settings when backing up, copying, or moving files. 
+
+#ACL Considerations
+Not all backup software will preserve these settings.
+Before applying ACLs you have to prepare the file system to handle the extra metadata by applying acl option in /etc/fstab
+
+#Backup/Restore ACL Settings
+getfacl -R 'directory to backup' > file.acl
+setfacl --restore=file.acl
+
+#View ACL Settings
+getfacl 'directory'
+
+#Set ACL Settings
+setfacl <option> <permissions> <directory>
+setfacl -m g:sales:rx /dir = -m modify current ACL to allow group (g) to allow sales to read and execute for /dir
+
+#Set Default ACL to be applied to directory
+setfacl -m d:g:sales:rx /dir  = d: states the following permission will be set to all subsequent files and directories created under /dir 
+
+#ACL Options
+-m = modify current ACL
+-R = appliy to directory and subdirectories
+
+#User-Extended Attributes
+Allows the ability to add extended attributes to files and folders
+
+#Considerations
+user_xattr mount option must be used and set in /etc/fstab.
+This is highly experimental and may not be supported by a lot of applications therefore making it useless depending on the intended use.
+
+#Attributes
+A = access time is not modified
+a = allows file to be added but not removed
+c = makes sure file is compressed first time engine get active. For volume level compression
+D = changes to files written directly to disk and not cache first
+d = file is not backed up when dump utility run
+i = means file is immutable. No changes can be made to the file at all.
+s = overwrite blocks where file was stored with a 0's after deletion to ensure file cant be recovered.
+u = saves undelete information, allows an utility to be developed that works to salvage deleted files.
+
+#Apply attributes
+chattr +s somefile = adds the attribute 's' to somefile
+cattr -s somefile = removes the attribute 's' from somefile
+
