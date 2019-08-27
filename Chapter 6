@@ -42,3 +42,4 @@ ldap_id_use_start_tls = indicates whether TLS is used to secure the connection t
 ldap_tls_cacertdir = the location in the LDAP client where certificates are copied to
 ldap_tls_reqcert = parameter that indicates how strict the client needs are to enforce TLS security.
 
+
