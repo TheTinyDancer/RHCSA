@@ -1,0 +1,39 @@
+Configuring Networking
+
+Commands:
+
+ip addr = configure and monitor network addresses
+  ip addr show / ip a s
+  ip addr add
+ip route = configure and monitor routing information
+ip link = configure and monitor network link state
+  ip link show
+netstat = verify availability of ports on your server
+ss = same as netstat, newer and preferred command though
+  ss -lt = see all listening TCP ports on the local system
+nmtui = text user interface for managing network configurations
+nmcli = command line interface for managing network configurations
+  nmcli con show = show all connections
+  nmcli dev status = show device statuses
+  nmcli dev show <devicename>
+  nmcli con add = add a new connection
+  nmcli con mod = modify an existing connection
+  nmcli con reload = activate any changes made to the configuration scripts
+nm-connection-editor = GUI to manage network configurations but it is limited in what it can do.
+hostnamectl set-hostname = set the hostname for your local system
+getent hosts <servername> = test your hostname resolution
+
+Network Manager:
+
+Networking on RHEL7 is managed by the service NetworkManager service. When NetworkManager comes up it reads the network configuration scripts from /etc/sysconfig/network-scripts/ifcfg-
+Can also use nmcli and nmtui to manager configurations for Network Manager
+nmcli is the command line way to manage NetworkManager
+nmtui is the text user interface to manage NetworkManager
+After modifying configurations files manually you have to run the command "nmcli con reload" in order to activate the new changes.
+
+Hostname and Name Resolution:
+
+To configure the hostname for a system use the hostnamectl command or use nmtui. It can also be adjusted through /etc/hostname.
+Name resolution can be established by /etc/hosts, but its not preferred for larger systems. DNS servers can be set by nmcli and nmtui, it can also be set in the ifcfg files by using DNS1 and DNS2 options. If network configuration is set by a DHCP server and you do not want this to happen as it will constantly overwrite your /etc/resolv.conf file then do the following
+- set PEERDNS=NO in ifcfg file
+- nmcli con mod <con-name> ipv4.ignore-auto-dns yes
