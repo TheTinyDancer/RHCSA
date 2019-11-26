@@ -1,0 +1,59 @@
+Managing Processes
+
+Commands:
+Ctrl+z = Stop job temporarily so that it can be managed.
+Ctrl+d = Sends End Of File (EOF) to the current job to indicate to stop waiting for further input.
+Ctrl+c = Cancels the current job.
+bg = Continues the last job frozen by Ctrl+z
+fg = Brings the last job moved to the background to the foreground.
+jobs = Shows which jobs are currently running and can be managed with bg and fg.
+& (used at the end of the command line) = Starts the command immediately in the background.
+ps = Show only processes that have been started by the current user.
+ps aux = Show a short summary of the active processes.
+ps ef = Show the exact command used to start a process.
+ps fax = Shows a hierarchical relationship between parent and child processes.
+nice = Use to start a process with an adjusted priority.
+renice = Use to change the priority of a currently running process.
+kill <PID> = Used to a send a signal to a process identified by PID
+pkill <Process name> = Takes the name instead of PID.
+kill -l = List all available signals to be used.
+killall = Kill all processes with the name given.
+top = Used to give an overview of the most active processes running.
+
+Process Management:
+
+- Shell jobs are started from the command line.
+- Daemons are processes that provide services. Normally started when a computer is booted and often with root privileges, but this isnt always the case.
+- Jobs can be moved to background, foreground, paused, and stopped.
+- Processes started in the backgroun will not be killed when the parent shell from which they were started is killed. To terminate these processes, you need to use the kill command, as described later in this chapter.
+- One process can start worker threads, the threads can be handled by different CPUs or CPU cores available in the machine.
+- Kernel processes have a name that is between square brackets.
+- Kernel threads cannot be managed, you cannot adjust their priority; neither is it possible to kill them, except by taking the machine down.
+
+
+Process Priority:
+
+- All regular processes are equal and are started with the same priority, which is the priority number 20.
+- Priority values range from -20 to 19. 
+- The default niceness of a process is set to 0 (which results in a priority value of 20)
+- By appling a negative niceness, you increase the priority. Using a positive niceness decreases the priority.
+- It is a good idea not to use the max/min values immediately. Instead, use increments of 5 and see how it affects the application.
+- Regular users can only decrease the priority of a running process. You must be root to increase the priority.
+
+Killing Processes:
+
+- SIGTERM(15) is used to ask a process to stop.
+- SIGKILL(9) is used to force a process to stop.
+- SIGHUP(9) is used to hang up a process. The effect is that the process will reread its configuration files, which makes this a useful signal to use after making modifications to process a configuration file.
+- The killall command will kill multiple processes using the same names.
+
+Using Top:
+
+- Top is used to give an overview of the most active processes running.
+- Running (R) = Process is currently active and using CPU time or in the queue of runnable processes.
+- Sleeping (S) = Process is waiting for an event to complete.
+- Uninterruptable Sleep (D) = Process is in a sleep state that cannot be stopped. Usually waiting for I/O
+- Stopped (S) = Process has been stopped.
+- Zombie (Z) = Process has been stopped but could not be removed by its parent, which has put it in an unmanageable state.
+- Type 'k' and top will prompt for a PID of the process you want to send a signal to.
+- Type 'r' and top will prompt for a PID of the process you want to renice.
