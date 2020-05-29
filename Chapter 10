@@ -1,0 +1,27 @@
+Working with Virtual Machines:
+
+Kernal Virtual Machine (KVM)
+  Offered in the base linux kernel as a hypervisor-based virtualization solution.
+Desktop-based Virtualization: VMs are provided by the application and if the application is shutdown so are the VMs.
+Hypervisor-based Virtualization: VMs are running directly on top of the Linux kernel. No application is running to support the VMs and you may not even realize the VMs are running on your server.
+QEMU (Quick Emulator) is an open source software to running virtualizaion through binary emulation. It is combined with KVM to run VMs are near native speed.
+Libvirtd - Is the process that sits between the virtualization layer and the application that an administrator is using to access the VMs. If you cant access VMs this process is usually the culprit so make sure it is running.
+Virtual Machine Manager: GUI to manage VMs offer through the virt-manager binary.
+Virtual disk images during installation are stored in /var/lib/libvirt/images
+
+KVM Networking:
+
+
+
+KVM Requirements:
+64-bit CPU Architecture = uname -l
+CPU must support hardware virtualization = Switch on virtualization support in BIOS. cat /proc/cpuinfo | grep -i vmx
+
+Directories:
+/etc/libvirt/libvirtd.conf = Where you configure virtual machine management options.
+/var/lib/libvirt/images = Where the virtual disk images are stored for the VMs.
+
+Commands:
+virsh = shell interface to manage KVMs.
+uname -l = diplay kernel and architecture information
+cat /proc/cpuinfo | grep -i vmx  = 
