@@ -1,5 +1,8 @@
 Configuring Networking
 
+Exam Objectives:
+- Configure networking and hostname resolution statically or dynamically.
+
 Commands:
 
 ip addr = configure and monitor network addresses
