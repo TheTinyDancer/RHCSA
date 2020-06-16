@@ -1,5 +1,11 @@
 #Configuring Permissions
 
+Exam Objectives:
+- List, set, and change standard UGO/rwx permissions.
+- Create and configure set-GID directories for collaboration.
+- Create amd manage access control lists.
+- Working with User-Extended Attributes.
+
 #Commands
 find = search files based on parameters
 chown <user> <file> = set ownership of file
