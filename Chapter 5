@@ -1,4 +1,12 @@
 #Connecting To Redhat
+
+Exam Objectives:
+- Access remotes systems using SSH
+- Switch users in multiple targets.
+- Boot, reboot, and shut down a system manually.
+- Securely transfer files between systems.
+- Configure key-based authentication for SSH.
+
 Console - what you see when your're looking at the computer screen. Physical computer itself
 Terminal - Is the command line environment. 
 Most commonly these terms can be interchanged though
