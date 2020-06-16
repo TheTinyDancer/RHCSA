@@ -1,5 +1,10 @@
 #Using Essentials Tools
 
+Exam Objectives:
+- Use input-output direction
+- Create and edit text files
+- Locate, read, and use system documentation including man, info, and files in /usr/share/doc
+
 /etc/profile= Generic file processed by all users upon login
 /etc/bashrc= file processed when subshells are started
 ~/.bash_profile= user specific shell variables defined here
