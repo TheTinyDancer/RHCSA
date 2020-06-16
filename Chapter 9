@@ -1,5 +1,8 @@
 Managing Processes
 
+Exam Objectives:
+- Identify CPU/memory-intensive processes, adjust process priority with renice, and kill processes.
+
 Commands:
 Ctrl+z = Stop job temporarily so that it can be managed.
 Ctrl+d = Sends End Of File (EOF) to the current job to indicate to stop waiting for further input.
