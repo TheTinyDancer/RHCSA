@@ -1,5 +1,16 @@
 Working with Virtual Machines:
 
+Exam Objectives:
+- Access a virtual machine's console.
+- Start and Stop virtual machines.
+- Configure a physical machine to host virtual guests.
+- Install RHEL systems as virtual guests.
+- Configure systems to launch virtual machines at boot.
+
+KVM Requirements:
+64-bit CPU Architecture = uname -l
+CPU must support hardware virtualization = Switch on virtualization support in BIOS. cat /proc/cpuinfo | grep -i vmx
+
 Kernal Virtual Machine (KVM)
   Offered in the base linux kernel as a hypervisor-based virtualization solution.
 Desktop-based Virtualization: VMs are provided by the application and if the application is shutdown so are the VMs.
@@ -10,12 +21,26 @@ Virtual Machine Manager: GUI to manage VMs offer through the virt-manager binary
 Virtual disk images during installation are stored in /var/lib/libvirt/images
 
 KVM Networking:
+Virtual Bridge: Works like an embedded switch, and it is used to connect one or more physical network interfaces in the host to the different VMs.
+Vnet = Virtual network interface. The first VM to start gets Vnet0, and so on.
 
+Using KVM:
+To change virtual hardware settings use Virtual Manachine Manager or use virsh edit <vmname> command
+Ways to access VMs= ssh, virtual machine manager, through GNOME, virt-viewer, third-party utilities.
+Left Ctrl+alt = release the mouse cursor from VM.
+Using ssh or VNC is the most practical way to connect to VMs in production environments.
 
+How to access virtual machine from text-only console:
+1. login to the VM youre trying to access with root privileges.
+2. type grubby --update-kernel=ALL --args="console=ttyS0"   = this edit the grub2 config file to allow a console tty
+3. Restart your VM using reboot command.
+4. From KVM host, use the virsh console <vm FQDN>
+5. Use Ctrl+] to leave the console session
 
-KVM Requirements:
-64-bit CPU Architecture = uname -l
-CPU must support hardware virtualization = Switch on virtualization support in BIOS. cat /proc/cpuinfo | grep -i vmx
+Monitoring Virtual Machines:
+Using top you're able to see how much CPU time was stolen from the hypervisor by VMs. Thats what the ' st ' column represents.
+It also allows you to see how busy a VM is compared to other processes on the Host, but to see specific processes running on the VM youll have to login and run top on the VM.
+
 
 Directories:
 /etc/libvirt/libvirtd.conf = Where you configure virtual machine management options.
@@ -23,5 +48,16 @@ Directories:
 
 Commands:
 virsh = shell interface to manage KVMs.
+  list= Show all VMs currently active
+  list --all = Show all VMs even ones not currently active.
+  shutdown <vmname> = shutdown specific VM
+  destroy <vmname> = Halts a VM similar to pulling the plug
+  edit <vmname> = allow you to edit the xml config file of the VM
+  console <vmname> = Connect to a VM through the console from the Host.
+  start <vmname> = Starts a VM
+  reboot <vmname> = Reboots a VM
 uname -l = diplay kernel and architecture information
-cat /proc/cpuinfo | grep -i vmx  = 
+cat /proc/cpuinfo | grep -i vmx  = Find if VM is supported on your hardware.
+brctl show = Show the virtual bridge information
+virsh edit <vmname> = Edit virtual hardware settings.
+Left Ctrl+alt = release mouse cursor from VM.
