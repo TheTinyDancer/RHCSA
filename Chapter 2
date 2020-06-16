@@ -5,6 +5,21 @@ Exam Objectives:
 - Create and edit text files
 - Locate, read, and use system documentation including man, info, and files in /usr/share/doc
 
+alias <newcommand>=<oldcommand
+type <command> = tell whether a command is internal or external.
+
+I/O Direction:
+> = redirects STDOUT
+>> = appends STDOUT
+2> = redirects STDERR
+2>&1 = redirects STDERR to the same destination as STDOUT
+
+History:
+history = see previously used commands 
+  Ctrl+r = to open prompt and do a backwards search.
+  !number = execute command with specified number from history.
+  !sometext = execute last command that starts with sometext.
+
 /etc/profile= Generic file processed by all users upon login
 /etc/bashrc= file processed when subshells are started
 ~/.bash_profile= user specific shell variables defined here
