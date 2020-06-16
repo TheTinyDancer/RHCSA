@@ -1,5 +1,10 @@
 
 # Working with Text Files
+
+Exam Objectives:
+- Using grep and regular expressions to analyze text.
+- Create and edit text files.
+
 less = opens file in a pager for easy reading
 cat = dumps content of file to the screen
 head = shows first 10 lines
