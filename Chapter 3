@@ -20,6 +20,8 @@ cp <source> <destination> = copy a file or directory
 #Links
 Hard Links = linked to the inode address and physical data
 Symbolic/Soft Link = Linked to the name of the inode. If original file name changes or is deleted this link is dead.
+ln = hard link
+ln -s = symbolic link
 
 #Archive and Compression
 tar = archive/compress/extract command
