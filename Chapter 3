@@ -1,4 +1,10 @@
-#Essential File Management=
+#Essential File Management
+
+Exam Objectives:
+- Archive, compress, unpack, and uncompress files.
+- Create, delete, copy, and move files directories.
+- Create hard and soft links.
+
 /boot = Often mounted on a separate device since it contains all critical info for boot.
 /var = usually stored on a dedicated device since it can grow exponentially and uncontrollably.
 /home = usually on a dedicated device for security reasons with special mount options
