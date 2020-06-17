@@ -36,6 +36,7 @@ groupmems = check what users are about of a group
 authconfig= command line interface.
 authconfig-tui = utility with text user interaface
 authconfig-gtk = utility with GUI.
+authconfig --test = Find out which authentication settings are being currently used.
 
 #sssd
 SSSD = provides a set of daemons to manage access to remote directories and authentication mechanisms. It provides Name Service Switch (NSS) and Pluggable Authentication Modules(PAM) interfaces toward the system and a pluggable back end system to connect to multiple different account sources.
