@@ -7,7 +7,7 @@ Exam Objectives:
 - Working with User-Extended Attributes.
 
 #Commands
-find = search files based on parameters
+find <directory> <options> <option parameter> = search files based on parameters
 chown <user> <file> = set ownership of file
 chgrp <group> <file> - set group of file
 groups <user> = view all groups a user belongs to
