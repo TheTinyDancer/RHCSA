@@ -11,6 +11,9 @@ Console - what you see when your're looking at the computer screen. Physical com
 Terminal - Is the command line environment. 
 Most commonly these terms can be interchanged though
 
+Non-GUI Environment:
+Alt+F1-6 = Open new terminal windows using 1-6
+
 #SSH
 sshd service controls ssh.
 -p = to specify a different port
@@ -62,6 +65,7 @@ escape = allows you to scroll with up and down arrow
 a, x = lock current screen session
 
 #Useful Commands
+chvt <1-6> = used in non-GUI environment to change virtual terminals.
 echo b > /proc/sysrq-trigger
 ssh <user>@<server ip>
 ssh-copy-id <target server>
