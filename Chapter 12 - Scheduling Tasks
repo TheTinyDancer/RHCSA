@@ -1,0 +1,25 @@
+Chapter 12 - Scheduling Tasks
+
+Cron - Daemon that looks every minute to see whether there is work to do.
+Cron time and date fields in order (5 positions)
+  minute  0-59
+  hour  0-23
+  day of month  1-31
+  month 1-12
+  day of week 0-7
+  
+Anacron service = Takes care of starting the hourly, daily, weekly, and monthly cron jobs.
+  
+Cron commands =
+  crontab -e = create cron for logged in user
+  crontab -e -u <username> = create cron for a specific user as root
+  
+At - Is used for services that need to be executed only once.
+  atq = view queued at jobs
+  atrm - remove the at job followed by the corresponding number
+  
+  
+  
+  /etc/crontab = main configuration file
+  /etc/cron.d = Preferred place to maintain crontab
+  /etc/cron.allow /etc/cron.deny = Users listed in these files have corresponding rights, if files dont exist then everyone is allowed.
