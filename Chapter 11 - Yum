@@ -1,0 +1,29 @@
+Chapter 11 Managing Software
+
+Yellowdog Update Manager = yum
+Repo file requirements:
+  [label]
+  name=
+  baseurl= (file:// ftp:// http://)
+
+
+Repo Types:
+  base = all essential redhat software
+  updates = contains updates only
+  optional = convenience open source packages not supported by redhat
+  supplementary = convenience proprietary packages not supported by redhat
+  extras = packages from different sources not supported by redhat
+  
+Yum commands
+  search= search for name of package
+  provides */name=search for specific files within a package
+  info= Provide more info about a package
+  install
+  remove= remove the packages and by default will remove dependencies
+  list [all | installed]= list all or installed packages
+  group list [hidden]= list package groups/also list hidden groups
+  group install= Install all packages from a group
+  update= update packages specified
+  clean all= Remove all stored metadata
+
+/etc/pki/rpm-gpg = where gpg keys for package are installed by default
