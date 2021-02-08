@@ -1,0 +1,54 @@
+MBR/GPT Partitions
+  MBR partitioning scheme - Master boot record sits on the bootable device and contains the boot loader and partition table.
+    First 512  bytes on the hard drive.
+  GPT partitioning scheme - GUID Partition Table is used by UEFI as the replacement for BIOS systems. GPT is backwards compatible though and can be used with BIOS as well.
+  GPT offers the following benefits = max partition size of 8ZiB, max of 128 partitions, backup copy of GPT at the end of the disk for backup purposes.
+  
+Managing Partitions and File Systems
+  Fdisk utility used for MBR, Gdisk used for GPT.
+  Common Disk Device types:
+    /dev/sda - hard disk using SCSI
+    /dev/hda - legacy IDE disk type
+    /dev/vda - disk ina kvm virtual machine
+    /dev/xvda - disk in a Xen virtual machine
+  Primary Partitions - Allow you create file systems on a disk.
+  Extended Partitions - Used only for the purpose of creating logical partitions. Cannot create file systems directly on an extended partition.
+  File Systems:
+    XFS - Default file system in RHEL 7
+    Ext4 - Legacy default file system in RHEL
+    BtrFS - New file system receiving support in later RHEL 7 versions
+    NTFS - Not supported on RHEL 7
+    VFAT - Offer compatibility with Windows and MAC
+Handling SWAP
+  SWAP = Used to improve Linux Kernel memory especially when you're low on RAM.
+  SWAP Partition = Is a dedicated partition used for SWAP.
+  SWAP file = is a file that is used for swap and can be used in a hurry to create swap.
+Mounting
+  /etc/fstab = Used to automatically mount during start up.
+    Six fields (in order) = Device,  Mount Point,  File System,   Mount Options,  Dump Support,   Automatic Check
+    Common Mount Options:
+      auto / noauto = File will [not] be mounted automatically
+      acl = Adds the support for the file system access control lists
+      user_xattr = Adds support for user extended attributes
+      ro = Mounts the file system in read-only mode
+      atime / noatime = Disables or enables access time modifications
+      noexec / exec = Denies or allows execution of program files from the file system
+      _netdev = Use this to mount a network file system. This tells fstab to wait unti the network is available before mounting this file system.
+    
+    
+ Commands
+  mkfs -t <filesystem type> /dev/sda3
+  tune2fs -l = Shows file system properties including labels.
+  tune2fs -L = Set a label on the file system.
+  xfs_admin = used to manage XFS file system.
+  dd if=/dev/zero of=/swapfile bs=1 count-100  = Creates a swap file of 100MiB
+  mkswap /swapfile  = mark /swapfile as a swap file.
+  swapon /swapfile  = turn on the swapfile.
+  mount <disk device> <mount point>  = Used to mount a device.
+  umount <disk device> OR <mount point>  = Will disconnect either way.
+  blkid = Gets an overview of the current file systems on your systems and the UUID that is used by that file system.
+  mount "UUID=<uuid>" <mount point>
+  mount LABEL=<label> <mount point>
+  
+  
+    
