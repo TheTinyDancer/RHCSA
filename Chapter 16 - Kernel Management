@@ -1,0 +1,8 @@
+Kernel Management
+
+Commands:
+
+lsmod - list modules loaded
+modprobe = loads kernel modules
+modprobe -r = unloads kernel modules
+modinfo = Displays information pertaining to a specific module.
