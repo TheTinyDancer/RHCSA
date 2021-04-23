@@ -1,0 +1,10 @@
+Managing LVM Partitions
+
+Commands:
+
+pvcreate <physical device>
+vgcreate <vgname> <physical device>
+lvcreate -n <lv name> -L 100M <vg name>
+lvcreate -n <lv name> -l 50%FREE <vg name>  =  Create LV with 50% of free available space in that Volume Group.
+lvresize -L +1G -r <full logical volume path>  = Resize logical with an extra 1 gig. -r  will go ahead and resize the filesystem as well.
+mkfs.<fs type>  =  Use on new logical to format with filesystem.
