@@ -1,0 +1,9 @@
+Apache Information
+
+Files:
+
+/etc/httpd/conf/httpd.conf   = This file contains most the main parameters set such as:
+  DocumentRoot = Default location where apache web server looks for its content
+  ServerRoot  = Default directory it will look for its config files.
+/etc/httpd = Usually where ServerRoot points to and holds most the server config files.
+index.html = Serves as main page for apache.
