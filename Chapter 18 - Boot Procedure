@@ -1,0 +1,20 @@
+Systemd
+  - System and service manager.
+  - Starts (units). Many units types, but the main one is services.
+
+Grub
+  - May want to remove rhgb and quiet in grub so you can see how everything boots up with error messages and all.
+
+Locations:
+
+/usr/lib/systemd/system - System default unit files
+/etc/systemd/system - System-specific modifications are stored here.
+/run/systemd/system - Runtime configuration is generated automatically here.
+/etc/default/grub - This is where grub changes should be made as it will be used to create grub2.cf
+
+Commands:
+
+systemctl show sshd - Shows all systemd options that can be configured.
+systemctl enable <service> - Service will be started on bootup
+systemctl disable <service> - Service wont be started on bootup
+man 7 bootparam - List of boot parameters while starting the kernel.
