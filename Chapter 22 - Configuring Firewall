@@ -1,0 +1,19 @@
+Firewalld
+
+GUI = firewall-config (MUST UPDATE SERVER FIRST TO USE)
+Use services over ports as much as possible
+
+Commands:
+
+firewall-cmd --get-services = List all available services
+firewall-cmd --get-zones = List all available zones
+firewall-cmd --list-all = List all configs for all zones
+firewall-cmd --add-port=<port number>/<udp or tcp> [--zone=ZONE] --permanent
+firewall-cmd --add-service=<service> [--zone=ZONE] --permanent
+firewall-cmd --remove-service=<service> [--zone=ZONE] --permanent
+firewall-cmd --remove-port=<port number>/<udp or tcp> [--zone=ZONE] --permanent
+firewall-cmd --add-interface=<interface> [--zone=ZONE] --permanent
+firewall-cmd --remove-interface=<interface> [--zone=ZONE] --permanent
+firewall-cmd --add-source=<IP/netmask> [--zone=ZONE] --permanent
+firewall-cmd --remove-source=<IP/netmask> [--zone=ZONE] --permanent
+firewall-cmd --reload
