@@ -1,0 +1,41 @@
+Kickstart
+
+Setting Up Installation Server
+  1. Need to make installation files available. To do so configure a network server.
+  2. Need to deliver boot image through PXE boot and DHCP
+  3. Need to create kickstart kickstart server.
+
+Configuring Network Server
+  1. Have RHEL Install CD in optical drive.
+  2. mkdir /www/docs/account.example.com/install  -  Create subdirectory for apache root.
+  3. cp -R <RHEL Install CD> /www/docs/account.example.com/install  -  Copy DVD to apache subdirectory
+  4. Modify /etc/httpd/conf.d/account.example.com to make sure it includes 'Options Indexes' otherwise it will only show contents if index.html exists.
+  5. systemctl restart httpd  - Restart apache
+  6. Start browser and browse to http://account.example.com/install and see contents of DVD
+  7. Start virtual machine manager and create new virtual machine and select Network Install
+  8. Give http://account.example.com/install
+  
+Setting up TFTP and DHCP for PXE Boot
+  1. Set up network installation server to begin with.
+  2. Install tftp-server. TFTP managed by xinetd service.
+  3. Edit /etc/xinetd.d/tftp and changed disabled parameter to yes.
+  4. Enable and start xinetd
+  5. Permit tftp in your firewall config. Make it permanent. Reload firewall.
+  6. Install dhcp.
+  7. Edit /etc/dhcp/dhcpd.conf to configure it for a specific subnet.
+  8. Create PXE boot default file.
+    1. yum install syslinux
+    2. copy /usr/share/syslinux/pxelinux.0 to /var/lib/tftpboot/pxelinux
+    3. mkdir /var/lib/tftpboot/pxelinux/pxelinux.cfg
+    4. Create default file
+  9. From RHEL Install CD copy images/pxeboot to /var/lib/tftpboot/pxelinux/
+  10. Restart dhcp and inetd
+  11. Connect machine to subnet and watch pxe boot.
+  12. When asked for URL enter account.example.com/install
+  13. Instruct firewall to allow traffic for tftp dhcp and http
+
+Creating Kickstart File
+  1. Copy anaconda-ks.cfg as starting point.
+  2. Add ks=http://account.example.com/anaconmda-ks.cfg to Document root or tftp default file.
+  3. YOu can use system-config-kickstart
+  
