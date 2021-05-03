@@ -1,0 +1,49 @@
+Troubleshooting Boot Procedure
+
+Full Boot Procedure
+  1. Perform POST - Hardware is started to start system - Usually F2, ESC, or F10
+  2. Select Bootable device
+  3. Load boot loader, usually GRUB2  - GRUB boot prompt, edit /etc/defaults/grub, followed by grub2-mkconfig
+  4. Load the Kerbel. Initramfs contains all the kernel modules needed. - GRUB boot prompt, edit /etc/defaults/grub, followed by grub2-mkconfig
+  5. Start /sbin/init - init= kernel boot argument, rd.break 
+  6. Process initrd.target - Prepares minimum operating environment and mounts file system on disk to /sysroot
+  7. Switch to root file system and load systemd process from disk - /etc/fstab
+  8. Runs default target for systemd. - start rescue.target as a kernel boot argument
+  
+Make Grub configs persistent- ALWAYS MAKE COPIES BEFORE CHANGES
+
+1. edit /etc/default/grub
+2. grub2-mkconfig -o /boot/grub2/grub.cfg\
+
+Troubleshooting Target
+
+rd.break - stops the boot procedure in the initramfs stage
+init=/bin/sh or init=/bin/bash - This specific shell should be started after loading the kernel and initrd
+systemd.unit=emergency.target - Enters into bare minimal mode.
+systemd.unit=rescue.target - Starts a few more systemd units to bring into more operational mode.
+
+Rescue a system
+
+1. Start rescue mode
+2. chroot /mnt/sysimage
+
+Reinstall GRUB from a rescue disk
+
+1. chroot /mnt/sysimage
+2. grub2-install /dev/vda or /dev/sda - depending on type of machine virtual or physical
+
+Recreate initramfs
+
+1. dracut
+
+Recovering Filesystem Issues
+
+1. fsck
+
+****Resetting Root Password****
+
+1. On system boot, press 'e' to edit grub.
+2. enter rd.break to kernel argument. Press ctrl-x to boot with this option
+3. On command line get read/write access to system image -  mount -o remount,rw /sysroot
+4. Reset root with passwd
+5. Load proper SELinux policy to /etc/shadow otherwise no one can login. - 'load_policy -i'   then run 'chcon -t shadow_t /etc/shadow'   OR create /.autorelabel
