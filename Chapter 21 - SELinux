@@ -1,0 +1,27 @@
+Context Labels:
+
+User = _u
+Role = _r
+Type = _t
+
+Commands:
+
+getenforce - see selinux mode
+setenforce <1 or 0> - set selinux mode
+sestatus -v  - Show detailed information about current running SELinux status
+ls -Z   -  Show file context
+ps Zaux   - Show process context
+semanage - Writes new context to SELinux policy
+chcon - Writes new context to the filesystem but not policy and will be overwritten when relabeled. DO NOT USE THIS
+semanage fcontext -a -t <context type> <files to change>  = -a is to add context and -t is change context types. This covers all new and existing files.
+restorecon -R -v <directory> = Apply new context policy to directory
+getsebool -a  = See booleans that exist to find the one you need use grep.
+semanage boolean -l  =  Same as above
+setsebool <boolean> <on/off>  = Change a boolean   THIS ISNT PERMANENT
+setsebool -P <boolean> <on/off>  = Change a boolean PERMANENTLY
+
+Troubleshooting SELinux:
+
+SELinux messages are logged in audit logs with type=AVC so just 'grep AVC'
+install setroubleshoot-server to use sealert and make logs more readable.
+
