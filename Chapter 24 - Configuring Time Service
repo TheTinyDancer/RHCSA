@@ -1,0 +1,22 @@
+Configuring Time Service
+
+Understanding Linux Time:
+
+Hardware Clock = Clock that resides on main card of a system
+Real-time Clock = Same as hardware clock
+System Time = Time maintained by operating system
+UTC = Universal Time Coordinated. Worldwide standard time
+
+NTP:
+
+/etc/chrony.conf = Configuration file for NTP
+
+Commands:
+
+timedatectl set-ntp 1  = Turns on NTP
+date = Show current system time
+hwclock = Shows hardware clock
+timedatectl status = Show current time settings
+timedatectl set-time TIME = Set current time
+timedatectl set-timezone ZONE = Set current time zone.
+timedatectl list-timezone
