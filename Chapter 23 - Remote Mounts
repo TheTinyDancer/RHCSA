@@ -1,0 +1,18 @@
+Remote Mounts
+
+Mounting NFS
+- install nfs-utils
+- Do a root mount meaning specify IP:/  and nothing more.
+FSTAB
+server:/share   /nfsmountpoint    nfs,_netdev,sync    0 0         = Be sure to use _netdev option
+
+Mounting SMB
+- install cifs-utils and samba-client
+- add 'samba-client' service to firewalld
+FSTAB
+//server/share    /cifsmountpoint   cifs,_netdev,credentials=<credential file>  0 0    = Use credential file. Look at man mount.cifs
+
+Commands:
+
+mount <IP>:/ /mnt  = Mount a root NFS mount
+mount -t cifs -o user=<user> //server/share /mnt  = Mount a SMB share
